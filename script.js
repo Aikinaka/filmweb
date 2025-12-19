@@ -16,8 +16,8 @@
             event.preventDefault();
             const query = input.value.trim();
             
-            if (!query || query.length < 2) {
-                showNotification('Введите название фильма (минимум 2 символа)', 'info', 'Внимание');
+            if (!query || query.trim() === '') {
+                showNotification('Введите название фильма', 'info', 'Внимание');
                 return;
             }
             
@@ -157,21 +157,43 @@ window.closeNotification = closeNotification;
 
 function updateHeaderAuthStatus() {
     const authButtons = document.querySelector('.auth-buttons');
-    if (!authButtons || !authButtons.closest('header')) return;
+    if (!authButtons) return;
     
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const isIndexPage = window.location.pathname.includes('index.html') || 
+                       window.location.pathname.endsWith('/') ||
+                       window.location.pathname === '';
+    
+    const isMovieDetailsPage = window.location.pathname.includes('movie-details.html');
     
     if (isLoggedIn) {
         const userData = JSON.parse(localStorage.getItem('currentUser') || '{}');
-        authButtons.innerHTML = `
-            <span class="user-greeting">Привет, ${userData.login}!</span>
-            <button onclick="logout()" class="btn-secondary">Выйти</button>
-        `;
-    } else if (window.location.pathname.includes('index.html')) {
-        authButtons.innerHTML = `
-            <a href="register.html" class="btn-secondary">Регистрация</a>
-            <a href="login.html" class="btn-primary">Вход</a>
-        `;
+        
+        if (isIndexPage || isMovieDetailsPage) {
+            authButtons.innerHTML = `
+                <span class="user-greeting">Привет, ${userData.login}!</span>
+                <button onclick="logout()" class="btn-primary">Выйти</button>
+            `;
+        } else {
+            authButtons.innerHTML = `
+                <a href="index.html" class="btn-secondary">На главную</a>
+                <span class="user-greeting">Привет, ${userData.login}!</span>
+                <button onclick="logout()" class="btn-primary">Выйти</button>
+            `;
+        }
+    } else {
+        if (isIndexPage || isMovieDetailsPage) {
+            authButtons.innerHTML = `
+                <a href="register.html" class="btn-secondary">Регистрация</a>
+                <a href="login.html" class="btn-primary">Вход</a>
+            `;
+        } else {
+            authButtons.innerHTML = `
+                <a href="index.html" class="btn-secondary">На главную</a>
+                <a href="register.html" class="btn-secondary">Регистрация</a>
+                <a href="login.html" class="btn-primary">Вход</a>
+            `;
+        }
     }
 }
 
@@ -181,6 +203,7 @@ function logout() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    updateHeaderAuthStatus();
     const logoImages = document.querySelectorAll('.logo-img');
     logoImages.forEach(img => {
         img.onerror = function() {
@@ -191,3 +214,12 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     });
 });
+
+function logout() {
+    localStorage.removeItem('isLoggedIn');
+    // Не удаляем currentUser, чтобы сохранить данные для будущего входа
+    showNotification('Вы вышли из системы', 'success');
+    setTimeout(() => {
+        window.location.href = 'index.html';
+    }, 1000);
+}

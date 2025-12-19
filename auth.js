@@ -38,6 +38,20 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             
             //Сохраниение данных пользователя
+            const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+
+            if (existingUsers.some(user => user.login === login || user.email === email)) {
+                showNotification('Пользователь с таким логином или email уже существует', 'error');
+                return;
+            }
+
+            // Добавляем нового пользователя
+            existingUsers.push(userData);
+
+            // Сохраняем массив пользователей
+            localStorage.setItem('users', JSON.stringify(existingUsers));
+
+            // Также сохраняем текущего пользователя для авторизации
             localStorage.setItem('currentUser', JSON.stringify(userData));
             
             //Переход на страницу входа
@@ -50,31 +64,44 @@ document.addEventListener('DOMContentLoaded', () => {
     
     //Вход
     const loginForm = document.getElementById('login-form');
-    if (loginForm) {
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const login = document.getElementById('login-username').value;
-            const password = document.getElementById('login-password').value;
-            
-            const storedUser = localStorage.getItem('currentUser');
-            
-            if (storedUser) {
-                const userData = JSON.parse(storedUser);
-                if (userData.login === login && userData.password === password) {
-                    localStorage.setItem('isLoggedIn', 'true');
-                    showNotification('Вход выполнен успешно!', 'success');
-                    setTimeout(() => {
-                        window.location.href = 'index.html';
-                    }, 1500);
-                } else {
-                    showNotification('Неверный логин или пароль', 'error');
-                }
-            } else {
-                showNotification('Пользователь не найден. Сначала зарегестритруйтесь', 'error');
-            }
-        });
-    }
+if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const login = document.getElementById('login-username').value;
+        const password = document.getElementById('login-password').value;
+        
+        // Получаем всех пользователей
+        const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+        const storedCurrentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+        
+        // Проверяем сначала текущего пользователя
+        if (storedCurrentUser.login === login && storedCurrentUser.password === password) {
+            localStorage.setItem('isLoggedIn', 'true');
+            showNotification('Вход выполнен успешно!', 'success');
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1500);
+            return;
+        }
+        
+        // Ищем среди всех пользователей
+        const foundUser = storedUsers.find(user => 
+            user.login === login && user.password === password
+        );
+        
+        if (foundUser) {
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('currentUser', JSON.stringify(foundUser));
+            showNotification('Вход выполнен успешно!', 'success');
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1500);
+        } else {
+            showNotification('Неверный логин или пароль', 'error');
+        }
+    });
+}
 });
 
 function showNotification(message, type = 'info', title = '') {
