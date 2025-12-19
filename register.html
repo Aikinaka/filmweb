@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="assets/logo.png" alt="Логотип ЖабКино" class="logo-img">
+                <h2>ЖабКино</h2>
+            </div>
+            <div class="auth-buttons">
+                <a href="index.html" class="btn-secondary">На главную</a>
+            </div>
+        </div>
+    </header>
+    
+    <main class="auth-container">
+        <h3>Регистрация</h3>
+        <form id="register-form">
+            <div class="form-group">
+                <input type="text" id="reg-login" placeholder="Логин" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="reg-email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="reg-password" placeholder="Пароль" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="reg-password-confirm" placeholder="Повторите пароль" required>
+            </div>
+            <button type="submit" class="btn-primary1">Зарегистрироваться</button>
+            <p class="auth-link">Уже есть аккаунт? <a href="login.html">Войти</a></p>
+        </form>
+    </main>
+    <script src="auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Zametka_Parletter';
+    src: url('assets/Zametka_Parletter.woff2') format('woff2'),
+         url('assets/Zametka_Parletter.woff') format('woff'),
+         url('assets/Zametka_Parletter.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    font-family: 'Zametka_Parletter';
+}
+
+body, input, button, textarea, select {
+    font-family: 'Zametka_Parletter';
+}

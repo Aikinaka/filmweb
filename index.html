@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЖабКино</title>
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="index-page">
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="assets/logo.png" alt="Логотип ЖабКино" class="logo-img">
+                <h2>ЖабКино</h2>
+            </div>
+            <div class="auth-buttons">
+                <a href="register.html" class="btn-secondary">Регистрация</a>
+                <a href="login.html" class="btn-primary">Вход</a>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="search-container">
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Введите название фильма..." />
+                <button type="submit" id="search-button">Поиск</button>
+            </form>
+        </div>
+        
+        <div id="notification"></div>
+        
+        <div id="movies-grid" class="movies-grid">
+            <p class="placeholder-text">Введите поисковый запрос, чтобы найти фильмы</p>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>

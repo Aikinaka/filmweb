@@ -1,0 +1,706 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Zametka_Parletter';
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: #000000;
+    line-height: 1.6;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    font-family: 'Zametka_Parletter';
+}
+
+body.index-page {
+    background-image: url('assets/bg-main.jpg');
+    background-color: #ffffff;
+}
+
+body.auth-page {
+    background-image: url('assets/bg-auth.jpg');
+    background-color: #ffffff;
+}
+
+body.details-page {
+    background-image: url('assets/bg-details.jpg');
+    background-color: #ffffff;
+}
+
+header {
+    background-color: #000000;
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 1000;
+}
+
+.header-content {
+    max-width: 1500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    background-color: transparent;
+    padding: 0;
+}
+
+.logo-img:hover {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    letter-spacing: 1px;
+    font-family: 'Zametka_Parletter';
+}
+
+.btn-primary, .btn-primary1, .btn-primary2, .btn-secondary {
+    padding: 14px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-family: 'Zametka_Parletter';
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+    margin-right: 20px;
+}
+
+.btn-primary, .btn-primary1, .btn-primary2, .btn-secondary {
+    background-color: #0095FF;
+    color: white;
+}
+
+.btn-primary:hover, .btn-primary1:hover, .btn-primary2:hover, .btn-secondary:hover {
+    background-color: #0077cc;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 149, 255, 0.4);
+}
+
+.btn-primary1 {
+    margin-left: 35px;
+}
+
+.btn-primary2 {
+    margin-left: 120px;
+}
+
+.auth-container {
+    max-width: 450px;
+    margin: 50px auto;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.auth-container h3 {
+    text-align: center;
+    color: #1353C2;
+    margin-bottom: 30px;
+    font-size: 36px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    font-family: 'Zametka_Parletter';
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px 25px;
+    font-size: 18px;
+    border: 2px solid #0095FF;
+    border-radius: 50px;
+    transition: all 0.3s;
+    background: #ffffff;
+    font-family: 'Zametka_Parletter';
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #1353C2;
+    box-shadow: 0 0 10px rgba(19, 83, 194, 0.3);
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 25px;
+    color: #000000;
+    font-size: 16px;
+    font-family: 'Zametka_Parletter';
+}
+
+.auth-link a {
+    color: #0095FF;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px dotted #0095FF;
+}
+
+.auth-link a:hover {
+    color: #1353C2;
+    border-bottom-style: solid;
+}
+
+.search-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+#search-form {
+    display: flex;
+    gap: 15px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+#search-input {
+    flex: 1;
+    padding: 15px 25px;
+    font-size: 18px;
+    border: 2px solid #0095FF;
+    border-radius: 50px;
+    background: #ffffff;
+    color: #000000;
+    font-family: 'Zametka_Parletter';
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: #1353C2;
+    box-shadow: 0 0 10px rgba(19, 83, 194, 0.3);
+}
+
+#search-button {
+    padding: 15px 35px;
+    background-color: #0095FF;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s;
+    font-family: 'Zametka_Parletter';
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#search-button:hover {
+    background-color: #0077cc;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 149, 255, 0.4);
+}
+
+.movies-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.movie-card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.movie-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0,149,255,0.3);
+    border-color: #0095FF;
+}
+
+.movie-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-bottom: 3px solid #0095FF;
+}
+
+.movie-card h3 {
+    margin: 15px;
+    font-size: 20px;
+    color: #000000;
+    min-height: 60px;
+    font-weight: bold;
+    font-family: 'Zametka_Parletter';
+}
+
+.movie-card p {
+    margin: 0 15px 15px;
+    color: #333333;
+    font-size: 16px;
+    font-family: 'Zametka_Parletter';
+}
+
+.movie-details {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    color: #000000;
+}
+
+.movie-details img {
+    width: 350px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.movie-details h2 {
+    color: #000000;
+    margin-bottom: 25px;
+    font-size: 42px;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    font-family: 'Zametka_Parletter';
+}
+
+.movie-details p {
+    margin: 20px 0;
+    font-size: 20px;
+    line-height: 1.8;
+    font-family: 'Zametka_Parletter';
+}
+
+.movie-details strong {
+    color: #1353C2;
+    min-width: 150px;
+    display: inline-block;
+    font-size: 22px;
+    font-family: 'Zametka_Parletter';
+}
+
+.back-button {
+    display: block;
+    width: 250px;
+    margin: 40px auto;
+    padding: 15px 30px;
+    background-color: #0095FF;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    transition: all 0.3s;
+    border: none;
+    font-family: 'Zametka_Parletter';
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.back-button:hover {
+    background-color: #0077cc;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 149, 255, 0.4);
+}
+
+.notification-container {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+}
+
+@keyframes slideDown{
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0) scale(1);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 1;
+        transform: translate(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.9);
+    }
+}
+
+.notification.hiding {
+    animation: slideUp 0.5s ease forwards;
+}
+
+.notification.info {
+    background: linear-gradient(135deg, #d1ecf1, #bee5eb);
+    color: #0c5460;
+    border: 2px solid #abdde5;
+}
+
+.notification:hover {
+    transform: translate(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.notification::after {
+    content: '×';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    font-weight: bold;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.notification:hover::after {
+    opacity: 1;
+}
+
+.user-greeting {
+    color: #ffffff;
+    font-weight: bold;
+    padding: 10px 20px;
+    background-color: rgba(0, 149, 255, 0.3);
+    border-radius: 50px;
+    margin-right: 15px;
+    border: none;
+    font-size: 18px;
+    font-family: 'Zametka_Parletter';
+}
+
+.placeholder-text {
+    text-align: center;
+    color: #000000;
+    font-size: 22px;
+    font-weight: bold;
+    grid-column: 1 / -1;
+    margin: 50px 0;
+    font-family: 'Zametka_Parletter';
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #7f8c8d;
+    font-size: 18px;
+    grid-column: 1 / -1;
+    font-family: 'Zametka_Parletter';
+}
+
+.no-results, .error {
+    text-align: center;
+    padding: 40px;
+    color: #e74c3c;
+    font-size: 18px;
+    grid-column: 1 / -1;
+    font-family: 'Zametka_Parletter';
+}
+
+.modal-notification {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-notification.show {
+    display: flex;
+}
+
+.modal-notification-content {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    animation: slideUp 0.4s ease;
+    position: relative;
+    border: 5px solid;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+}
+
+.modal-notification.hiding .modal-notification-content {
+    animation: slideDown 0.4s ease forwards;
+}
+
+.modal-notification.success .modal-notification-content {
+    border-color: #4CAF50;
+    background: linear-gradient(135deg, #ffffff, #f0f9f1);
+}
+
+.modal-notification.error .modal-notification-content {
+    border-color: #f44336;
+    background: linear-gradient(135deg, #ffffff, #fdeaea);
+}
+
+.modal-notification.info .modal-notification-content {
+    border-color: #2196F3;
+    background: linear-gradient(135deg, #ffffff, #e8f4fe);
+}
+
+.modal-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    font-family: 'Zametka_Parletter';
+}
+
+.modal-notification.success .modal-title {
+    color: #2E7D32;
+}
+
+.modal-notification.error .modal-title {
+    color: #C62828;
+}
+
+.modal-notification.info .modal-title {
+    color: #1565C0;
+}
+
+.modal-message {
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    color: #555;
+    font-family: 'Zametka_Parletter';
+}
+
+.modal-close-btn {
+    background-color: #0095FF;
+    color: white;
+    border: none;
+    padding: 14px 35px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Zametka_Parletter';
+    box-shadow: 0 4px 8px rgba(0, 149, 255, 0.2);
+    min-width: 180px;
+}
+
+.modal-close-btn:hover {
+    background-color: #0077cc;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 149, 255, 0.3);
+}
+
+.modal-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.modal-notification.success .modal-icon {
+    color: #4CAF50;
+    content: "✓";
+}
+
+.modal-notification.error .modal-icon {
+    color: #f44336;
+    content: "✗";
+}
+
+.modal-notification.info .modal-icon {
+    color: #2196F3;
+    content: "ℹ";
+}
+
+.modal-close-x {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    color: #777;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close-x:hover {
+    background-color: #f0f0f0;
+    color: #333;
+    transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .logo h1 {
+        font-size: 28px;
+    }
+    
+    .auth-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .movies-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    
+    .movie-details {
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    .movie-details img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .auth-container {
+        margin: 20px;
+        padding: 25px;
+    }
+    
+    #search-form {
+        flex-direction: column;
+    }
+    
+    .movie-details h2 {
+        font-size: 32px;
+    }
+
+    .notification-container {
+        top: 70px;
+        padding: 0 15px;
+    }
+    .notification-container {
+        top: 70px;
+        padding: 0 15px;
+    }
+    
+    .notification {
+        padding: 15px 20px;
+        font-size: 16px;
+        width: 95%;
+    }
+    
+    .notification::after {
+        right: 15px;
+        font-size: 22px;
+    }
+
+    .modal-notification-content {
+        padding: 30px 20px;
+        width: 85%;
+    }
+    
+    .modal-title {
+        font-size: 24px;
+    }
+    
+    .modal-message {
+        font-size: 18px;
+    }
+    
+    .modal-close-btn {
+        padding: 12px 25px;
+        font-size: 16px;
+        min-width: 150px;
+    }
+    
+    .modal-icon {
+        font-size: 50px;
+    }
+}
